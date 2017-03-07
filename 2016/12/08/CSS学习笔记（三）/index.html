@@ -1,0 +1,1053 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="新手,CSS,笔记," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="四、CSS的特殊性、继承和层叠CSS的特殊性（也称优先级）、继承和层叠通常被称为CSS的三大特性。
+4.1 特殊性CSS的特殊性解决的是当我们对同一个元素设置了不同的 CSS 样式，那么到底最后作用于元素是哪个样式呢？例如下面的规则：12345h1 &amp;#123;color: red;&amp;#125;body h1 &amp;#123;color: green;&amp;#125;h2.grape &amp;#123;colo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS学习笔记（三）">
+<meta property="og:url" content="http://yoursite.com/2016/12/08/CSS学习笔记（三）/index.html">
+<meta property="og:site_name" content="Joke's Blog World">
+<meta property="og:description" content="四、CSS的特殊性、继承和层叠CSS的特殊性（也称优先级）、继承和层叠通常被称为CSS的三大特性。
+4.1 特殊性CSS的特殊性解决的是当我们对同一个元素设置了不同的 CSS 样式，那么到底最后作用于元素是哪个样式呢？例如下面的规则：12345h1 &amp;#123;color: red;&amp;#125;body h1 &amp;#123;color: green;&amp;#125;h2.grape &amp;#123;colo">
+<meta property="og:image" content="http://ogcpvdyqb.bkt.clouddn.com/color.png">
+<meta property="og:image" content="http://ogcpvdyqb.bkt.clouddn.com/white.png">
+<meta property="og:updated_time" content="2017-03-07T04:33:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS学习笔记（三）">
+<meta name="twitter:description" content="四、CSS的特殊性、继承和层叠CSS的特殊性（也称优先级）、继承和层叠通常被称为CSS的三大特性。
+4.1 特殊性CSS的特殊性解决的是当我们对同一个元素设置了不同的 CSS 样式，那么到底最后作用于元素是哪个样式呢？例如下面的规则：12345h1 &amp;#123;color: red;&amp;#125;body h1 &amp;#123;color: green;&amp;#125;h2.grape &amp;#123;colo">
+<meta name="twitter:image" content="http://ogcpvdyqb.bkt.clouddn.com/color.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/12/08/CSS学习笔记（三）/"/>
+
+
+
+
+
+  <title> CSS学习笔记（三） | Joke's Blog World </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Joke's Blog World</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">You Can Do Best!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/08/CSS学习笔记（三）/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Joke">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Joke's Blog World">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Joke's Blog World" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                CSS学习笔记（三）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-08T20:42:07+08:00">
+                2016-12-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="四、CSS的特殊性、继承和层叠"><a href="#四、CSS的特殊性、继承和层叠" class="headerlink" title="四、CSS的特殊性、继承和层叠"></a>四、CSS的特殊性、继承和层叠</h2><p>CSS的特殊性（也称优先级）、继承和层叠通常被称为CSS的三大特性。</p>
+<h3 id="4-1-特殊性"><a href="#4-1-特殊性" class="headerlink" title="4.1 特殊性"></a>4.1 特殊性</h3><p>CSS的特殊性解决的是当我们对同一个元素设置了不同的 CSS 样式，那么到底最后作用于元素是哪个样式呢？例如下面的规则：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">h1</span> &#123;<span class="attribute">color</span>: red;&#125;</div><div class="line"><span class="selector-tag">body</span> <span class="selector-tag">h1</span> &#123;<span class="attribute">color</span>: green;&#125;</div><div class="line"></div><div class="line"><span class="selector-tag">h2</span><span class="selector-class">.grape</span> &#123;<span class="attribute">color</span>: purple;&#125;</div><div class="line"><span class="selector-tag">h2</span> &#123;<span class="attribute">color</span>: silver;&#125;</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>最终，元素 h1 显示的是 green，而 h2 显示的是 purple。原因在于每个选择器都有它的特殊性。对于每个规则，用户代理(浏览器)会计算选择器的特殊性(权值)，这样规则中选择器对应的声明就有了相应的特殊性(权值)。当有两个或者多个属性声明作用于一个元素时，就可以根据这个特殊性(权值)来决定哪条声明奏效，特殊性(权值)越高，则相应的声明就会被应用。  </p>
+<p>选择器的特殊性是由选择器本决定的。选择器的具体特殊性(权值)，如下：</p>
+<ol>
+<li>ID选择器的特殊性(权值)为：0，1，0，0</li>
+<li>类选择器、属性选择器或者伪类的特殊性(权值)为：0，0，1，0</li>
+<li>元素或者伪元素的特殊性(权值)为：0，0，0，1</li>
+<li>结合符和通配符没有特殊性(权值)</li>
+</ol>
+<blockquote>
+<p><strong>注意：</strong><br>内联样式的特殊性(权值)为：1，0，0，0</p>
+</blockquote>
+<p>计算一个组合选择器的特殊性(权值)的时候，在计算不同选择器的数量以及其对应的特殊性(权值)后再相加，例如：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">div</span> <span class="selector-tag">ul</span> <span class="selector-tag">li</span> &#123;<span class="attribute">color</span>:red;&#125;   <span class="comment">/* 0,0,0,3    3个元素选择器 */</span></div><div class="line"><span class="selector-tag">div</span><span class="selector-class">.nav</span> <span class="selector-tag">ol</span> <span class="selector-tag">li</span> &#123;<span class="attribute">color</span>:purple;&#125;   <span class="comment">/* 0,0,1,3   1个类选择器，3个元素选择器 */</span></div><div class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:hover</span> &#123;<span class="attribute">color</span>:blue;&#125;  <span class="comment">/* 0,0,1,1   1个伪类选择器，1个元素选择器 */</span></div><div class="line"><span class="selector-tag">div</span><span class="selector-class">.navlinks</span> <span class="selector-tag">a</span><span class="selector-pseudo">:hover</span> &#123;<span class="attribute">color</span>:yellow;&#125;  <span class="comment">/* 0,0,2,2    1个类选择器，1个伪类选择器，2个元素选择器 */</span></div><div class="line"><span class="selector-class">.affix</span><span class="selector-class">.top</span>&#123;<span class="attribute">background</span>:silver&#125;  <span class="comment">/* 0,0,2,0    多类选择器 注 */</span></div><div class="line"><span class="selector-tag">input</span><span class="selector-attr">[type="text"]</span> &#123;<span class="attribute">font-style</span>:italic;&#125; <span class="comment">/* 0,0,1,1    1个属性选择器，1个元素选择器 */</span></div><div class="line"><span class="selector-tag">input</span><span class="selector-attr">[name="sex"]</span><span class="selector-attr">[type="radio"]</span> &#123;<span class="attribute">background</span>:silver;&#125;  <span class="comment">/* 0,0,2,1    2个属性选择器，1个元素选择器 */</span></div><div class="line"><span class="selector-id">#title</span> <span class="selector-tag">em</span> &#123;<span class="attribute">font-weight</span>:<span class="number">12px</span>;&#125;  <span class="comment">/* 0,1,0,1    1个 ID 选择器，1个元素选择器 */</span></div><div class="line"><span class="selector-tag">h1</span><span class="selector-id">#title</span> <span class="selector-tag">em</span> &#123;<span class="attribute">font-weight</span>:<span class="number">14px</span>;&#125; <span class="comment">/* 0,1,0,2    1个 ID 选择器，2个元素选择器 */</span></div><div class="line">* &#123;<span class="attribute">background</span>:silver;&#125;  <span class="comment">/* 0,0,0,0    1个通用选择器 */</span></div></pre></td></tr></table></figure></p>
+<h3 id="4-2-继承"><a href="#4-2-继承" class="headerlink" title="4.2 继承"></a>4.2 继承</h3><p>CSS的某些样式是具有继承性的，那么继承到底是什么意思呢？CSS中，继承是一种规则，它允许样式不仅应用于某个指定的元素，而且应用于其后代元素。例如,应用了下面CSS样式的h1元素：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">h1</span> &#123;<span class="attribute">color</span>: gray;&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Welcome to <span class="tag">&lt;<span class="name">em</span>&gt;</span>NanJing<span class="tag">&lt;/<span class="name">em</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>h1元素应用了一个颜色，那么，这个颜色将应用到h1中的所有文本，甚至应用到h1元素的子元素中的文本。</p>
+<blockquote>
+<p><strong>注意：</strong>  </p>
+<ol>
+<li>CSS的某些样式是具有继承性的。在CSS中，大多数框模型属性(包括外边距、内边距、背景和边框)都不能被继承。如果可以继承，那么，文档将会变得混乱不堪。</li>
+<li>在CSS的特殊性规则中，继承的声明根本没有任何特殊性，而使用通配选择器的声明具有0, 0, 0, 0特殊性。当二者冲突时，通配选择器胜，会导致继承失效。正因为如此，一般不建议使用 (*)。例如：<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">* &#123;<span class="attribute">color</span>: red;&#125;</div><div class="line"><span class="selector-tag">h1</span> &#123;<span class="attribute">color</span>: gray;&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Welcome to <span class="tag">&lt;<span class="name">em</span>&gt;</span>NanJing<span class="tag">&lt;/<span class="name">em</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">```  </div><div class="line"></div><div class="line">最后的结果如下图所示：  </div><div class="line"></div><div class="line">![短路继承](http://ogcpvdyqb.bkt.clouddn.com/%E7%BB%A7%E6%89%BF%E7%9F%AD%E8%B7%AF.png)</div><div class="line"></div><div class="line">### 4.3 层叠</div><div class="line">CSS中，层叠解决的是这样一个问题：如果特殊性相等的两个规则同时应用到同一个元素，到底哪个规则会被应用呢？例如，以下的规则：</div><div class="line">```CSS</div><div class="line">h1 &#123;color: red;&#125;</div><div class="line">h1 &#123;color: blue;&#125;</div></pre></td></tr></table></figure>
+<h4 id="4-3-1-层叠规则"><a href="#4-3-1-层叠规则" class="headerlink" title="4.3.1 层叠规则"></a>4.3.1 层叠规则</h4><p>CSS中所谓的层叠，就是让多个来源的样式叠加在一起，然后结合样式的特殊性、继承性，确定最终应用的样式。在《CSS权威指南》这本书中指出，确定最终应用的样式，CSS2.1有4条层叠规则：</p>
+<ol>
+<li>找出所有相关的规则，这些规则都包含与一个给定元素匹配的选择器。</li>
+<li>按显示权重对应用到该元素的所有声明排序。标志!important的规则的权重要高于没有!important标志的规则。按来源对应用到给定元素的所有声明进行排序。共有3种来源：创作人员、读者和用户代理。正常情况下，创作人员的样式要胜过读者的样式。有!important标志的的读者样式要强于所有其他样式，包括有!important标志的创作人员样式。创作人员的样式和读者样式斗都比用户代理的默认样式强。</li>
+<li>按特殊性对应用到给定元素的所有声明进行排序，有较高特殊性的元素权重要大于有较低特殊性的元素。</li>
+<li>按出现顺序对应用到给定元素的所有声明排序。一个声明在样式表或文档中越后出现，它权重就越大。如果样式表中有导入的样式表，一般认为出现在导入样式表中的声明在前，主样式表中的所有声明在后。</li>
+</ol>
+<p>简单的来说，上述的规则意思是：对于一个指定的元素，将应用于该元素的所有规则，先按规则的显式权重和来源进行排序。如果相同，则比较规则的特殊性。若特殊性也相同，则比较规则的顺序。  </p>
+<h4 id="4-3-2-层叠总结"><a href="#4-3-2-层叠总结" class="headerlink" title="4.3.2 层叠总结"></a>4.3.2 层叠总结</h4><p>一、按权重和来源排序</p>
+<p>在《CSS权威指南》中，样式的来源可以分为3类：1、创作人员 ( 即内联式样式、嵌入式样式、外部式样式 ); 2、读者 ( 即用户自定义样式 ); 3、用户代理 ( 即浏览器样式 )。</p>
+<blockquote>
+<p>按照上述分类的样式，权重由大到小的顺序依次为：</p>
+<ol>
+<li>读者的重要声明</li>
+<li>创作人员的重要声明</li>
+<li>创作人员的正常声明</li>
+<li>读者的正常声明</li>
+<li>用户代理声明</li>
+</ol>
+<p>按照上述分类的样式，根据来源的排序为：</p>
+<ol>
+<li>创作人员（内联式样式、嵌入式样式、外部式样式）</li>
+<li>读者（用户自定义样式）</li>
+<li>用户代理（浏览器样式）</li>
+</ol>
+</blockquote>
+<p>二、按特殊性排序</p>
+<p>如果一个元素应用了多个彼此冲突的声明，而且他们的权重声明相同，则按照特殊性排序，特殊性值（权值）高的被应用。</p>
+<p>三、按顺序排序</p>
+<p>如果两个规则的权重、来源和特殊性完全相同，那么，在样式表中后出现的一个会被应用。</p>
+<blockquote>
+<p><strong>注意：</strong><br>由于内联式样式表的特殊性，CSS中有推荐的链接样式顺序。一般建议按link-visited-hover-active（LVHA）的顺序声明连接样式。如下所示：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-pseudo">:link</span> &#123;<span class="attribute">color</span>: blue;&#125;</div><div class="line"><span class="selector-pseudo">:visited</span> &#123;<span class="attribute">color</span>: purple;&#125;</div><div class="line"><span class="selector-pseudo">:hover</span> &#123;<span class="attribute">color</span>: red;&#125;</div><div class="line"><span class="selector-pseudo">:active</span> &#123;<span class="attribute">color</span>: orange;&#125;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="五-CSS中的单位、颜色、字体、文本"><a href="#五-CSS中的单位、颜色、字体、文本" class="headerlink" title="五. CSS中的单位、颜色、字体、文本"></a>五. CSS中的单位、颜色、字体、文本</h2><h3 id="5-1-CSS中的单位"><a href="#5-1-CSS中的单位" class="headerlink" title="5.1 CSS中的单位"></a>5.1 CSS中的单位</h3><p>CSS中的单位有：%（百分数）、in（英寸）、cm（厘米）、mm（毫米）、pt（点）、pc（派卡）、em（1em等于等于当前字体的尺寸）、ex（1ex是一个字体的x-height,而x-height通常是字体尺寸的一半）、px（像素，即计算机屏幕上的一个点）。</p>
+<blockquote>
+<p><strong>总结：</strong></p>
+<ol>
+<li>在《CSS权威指南》中，in（英寸）、cm（厘米）、mm（毫米）、pt（点）、pc（派卡）被称为绝对长度单位。在 Web 设计中，几乎很少使用绝对长度单位。</li>
+<li>在《CSS权威指南》中，em（1em等于等于当前字体的尺寸）、ex（1ex是一个字体的x-height,而x-height通常是字体尺寸的一半）、px（像素，即计算机屏幕上的一个点）被称为相对长度单位。</li>
+</ol>
+</blockquote>
+<h3 id="5-2-CSS中的颜色"><a href="#5-2-CSS中的颜色" class="headerlink" title="5.2 CSS中的颜色"></a>5.2 CSS中的颜色</h3><p>在CSS中，颜色有前景和背景色，可以为任何元素设置。CSS中，关于颜色的表示有4种方式：颜色名、RGB、16进制、HSL（CSS3）。</p>
+<blockquote>
+<p><strong>说明：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">一般来说，前景是元素的文本，不过前景还包括元素周围的边框。</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h4 id="5-2-1-用颜色名表示颜色"><a href="#5-2-1-用颜色名表示颜色" class="headerlink" title="5.2.1 用颜色名表示颜色"></a>5.2.1 用颜色名表示颜色</h4><p>在CSS 2.1 中，CSS规范定义了17个标准颜色名。包括HTML 4.01中定义的16个颜色，并外加一个橙色：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">aqua     fuchsia    lime      olive     red       white</div><div class="line">black    gray       maroon    silver    yellow    blue</div><div class="line">green    navy       purple    teal      orange</div></pre></td></tr></table></figure></p>
+<p><img src="http://ogcpvdyqb.bkt.clouddn.com/color.png" alt="color"></p>
+<h4 id="5-2-2-用RGB表示颜色"><a href="#5-2-2-用RGB表示颜色" class="headerlink" title="5.2.2 用RGB表示颜色"></a>5.2.2 用RGB表示颜色</h4><p>RGB颜色即计算机通过组合不同的红色、绿色和蓝色分量来创造颜色。使用RGB来表示颜色，有两种表示方法：百分数记法、整数三元组记法。例如，用RGB来表示白色：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">rgb(100%,100%,100%)   百分数记法</div><div class="line">rgb(255,255,255)    整数三元组记法</div></pre></td></tr></table></figure></p>
+<h4 id="5-2-3-用16进制表示颜色"><a href="#5-2-3-用16进制表示颜色" class="headerlink" title="5.2.3 用16进制表示颜色"></a>5.2.3 用16进制表示颜色</h4><p>16进制记法，即将三个介于00-FF的16进制数连起来表示一种颜色。例如，白色用16进制来表示是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#FFFFFF</div></pre></td></tr></table></figure></p>
+<h4 id="5-2-4-用HSL表示颜色"><a href="#5-2-4-用HSL表示颜色" class="headerlink" title="5.2.4 用HSL表示颜色"></a>5.2.4 用HSL表示颜色</h4><p>HSL是不同于RGB的色彩模式，HSL分别表示色调、饱和度、亮度，通过这三个参数来表示不同颜色。其中：</p>
+<ul>
+<li>H(Hue色调)：表示一个色相环，从0到360度取值，0(或360)是红色，120是绿色，240是蓝色；</li>
+<li>S(Saturation饱和度)：表示颜色的纯度，取值从 0.0% 到 100.0%，数值越大，颜色中的灰色越少，颜色越接近纯色；<br>L(Lightness亮度)：表示颜色的明暗，取值也是 0.0%——100.0%，0%是彻底变暗（黑），100%彻底变亮（白），50%正常亮度。</li>
+</ul>
+<h3 id="5-3-CSS中的URL、关键字"><a href="#5-3-CSS中的URL、关键字" class="headerlink" title="5.3 CSS中的URL、关键字"></a>5.3 CSS中的URL、关键字</h3><h4 id="5-3-1-URL"><a href="#5-3-1-URL" class="headerlink" title="5.3.1 URL"></a>5.3.1 URL</h4><p>CSS中，URL用来引用一个资源，这个资源可以是图片、样式表。URL有绝对URL和相对URL之分：</p>
+<ul>
+<li><p>绝对URL</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">绝对URL的格式一般是：url(protocol://server/pathname)</div><div class="line">例如：url(http://ogcpvdyqb.bkt.clouddn.com/color.png)</div></pre></td></tr></table></figure>
+</li>
+<li><p>相对URL</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">相对URL的格式一般是：url(pathname)</div><div class="line">例如：url(color.png)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p><strong>说明：</strong> 使用相对URL，则说明引用资源的页面和资源在同一个服务器上。</p>
+</blockquote>
+<h4 id="5-3-2-关键字"><a href="#5-3-2-关键字" class="headerlink" title="5.3.2 关键字"></a>5.3.2 关键字</h4><p>关键字：用来描述某个属性的值的词。例如，常见的 none、normal 等。</p>
+<ul>
+<li>关键字-inherit：在CSS2.1中，inherit 关键字是所有属性共有的。inherit 使一个属性的值与其父元素的值相同。</li>
+</ul>
+<h3 id="5-4-CSS中的字体"><a href="#5-4-CSS中的字体" class="headerlink" title="5.4 CSS中的字体"></a>5.4 CSS中的字体</h3><p>CSS 字体属性定义文本的字体系列、大小、加粗、风格（如斜体）和变形（如小型大写字母）。在CSS中，有两种不同类型的字体类型：特定字体系列、通用字体系列。</p>
+<ul>
+<li>特定字体系列：如 Times、Verdana、Helvetica或Arial等；</li>
+<li>通用字体系列：CSS 定义了5种通用字体，Serif 字体、Sans-serif 字体、Monospace 字体、Cursive 字体、Fantasy 字体；</li>
+</ul>
+<h4 id="5-4-1-字体系列的使用"><a href="#5-4-1-字体系列的使用" class="headerlink" title="5.4.1 字体系列的使用"></a>5.4.1 字体系列的使用</h4><p>在CSS中，可以使用属性 font-family 来定义文本的字体系列。</p>
+<ol>
+<li>给元素指定通用字体系列，例如：<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span> &#123;<span class="attribute">font-family</span>: sans-serif;&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p><strong>说明：</strong><br>所谓字体系列，是因为 sans-serif 包含多个字体，这些字体组成一个系列。当指定 sans-serif 系列字体，用户代理（浏览器）会根据用户端实际拥有的字体来进行适配。例如用户端实际安装了 Helvetica 字体，body 元素就会应用 Helvetica 字体。</p>
+</blockquote>
+<ol>
+<li>给元素指定字体，例如：<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">h1</span> &#123;<span class="attribute">font-family</span>: Georgia;&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>除了使用通用的字体系列，还可以通过 font-family 属性设置更具体的字体。但相应的，这样设置指定的字体的同时会产生另外一个问题，如果用户代理上没有安装 Georgia 字体，就只能使用用户代理的默认字体来显示 h1 元素。<br>所以，强烈建议在所有 font-family 规则中都提供一个通用字体系列，这样在用户代理无法提供与规则匹配的特定字体时，就可以选择一个候选字体。例如：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">h1</span> &#123;<span class="attribute">font-family</span>: Georgia, serif;&#125;</div><div class="line"><span class="selector-tag">h2</span> &#123;<span class="attribute">font-family</span>: Times, TimesNR, <span class="string">'New Century Schoolbook'</span>,</div><div class="line">     Georgia, <span class="string">'New York'</span>, serif;&#125;</div></pre></td></tr></table></figure></p>
+<p>如果用户没有安装 Georgia 字体，但安装了 Times 字体（serif 字体系列中的一种字体），用户代理就可能对 h1 元素使用 Times。尽管 Times 与 Georgia 并不完全匹配，但至少足够接近。</p>
+<blockquote>
+<p><strong>注意：</strong> 当字体名中有一个或者多个空格（如 New York），或者这些字体名包括 # 或 $ 之类的符号，使用 font-family 属性时，需要在声明中加引号。</p>
+</blockquote>
+<h4 id="5-4-2-字体的其它属性"><a href="#5-4-2-字体的其它属性" class="headerlink" title="5.4.2 字体的其它属性"></a>5.4.2 字体的其它属性</h4><p>除了指定字体系列，常用的字体属性还有：字体的加粗（font-weight）、字体的大小（font-size）、字体的风格（font-style）、字体的变形（font-variant）、字体的拉伸（font-stretch）、字体的调整（font-size-adjust）。</p>
+<ol>
+<li><p>字体加粗（font-weight）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">font-weight:  normal | bold | bolder | lighter | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | inherit</div></pre></td></tr></table></figure>
+</li>
+<li><p>字体的大小（font-size）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">font-size: xx-small | x=small | small | medium | larage | x-large | xx-large | smaller | larager | &lt;length&gt; | &lt;percentage&gt; | inherit</div></pre></td></tr></table></figure>
+</li>
+<li><p>字体的风格（font-style）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">font-style: italic | oblique | normal | inherit</div></pre></td></tr></table></figure>
+</li>
+<li><p>字体的变形（font-variant）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">font-variant: small-caps | normal | inherit</div></pre></td></tr></table></figure>
+</li>
+<li><p>字体的拉伸（font-stretch）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">font-stretch: normal | wider | narrower | ultra-condensed | extra-condensed | condensed | semi-condensed | semi-expanded | expanded | extra-expanded | ultra-expanded | inherit</div></pre></td></tr></table></figure>
+</li>
+<li><p>字体的调整（font-size-adjust）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">font-size-adjust: &lt;number&gt; | none | inherit</div></pre></td></tr></table></figure>
+</li>
+<li><p>font 属性：这是一个简写属性，作用是把所有针对字体的属性设置在一个声明中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">font: [[&lt;font-style&gt; || &lt;font-variant&gt; || &lt;font-weight&gt;]?&lt;font-size&gt;[/&lt;line-height&gt;]?&lt;font-family&gt;] | caption | icon | menu | message-box | small-caption | status-bar | inherit</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>例如：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">h1</span> &#123;<span class="attribute">font</span>:italic bold <span class="number">12px</span>/<span class="number">30px</span> arial,sans-serif;&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="5-5-CSS中的文本属性"><a href="#5-5-CSS中的文本属性" class="headerlink" title="5.5 CSS中的文本属性"></a>5.5 CSS中的文本属性</h3><p>文本属性可定义文本的外观。通过文本属性，您可以改变文本的颜色、字符间距，对齐文本，装饰文本，对文本进行缩进，等等。CSS中，文本属性有：缩进文本（text-indent）、水平文本对齐（text-align）、行高（line-height）、垂直对齐文本（vertical-align）、字间隔（word-spacing）、字母间隔（letter-spacing）、文本转换（text-transform）、文本装饰（text-decoration）、文本阴影（text-shadow）、处理空白格（white-space）、文本方向（direction）或者（unicode-bidi）。</p>
+<ol>
+<li><p>缩进文本（text-indent）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">text-indent: &lt;length&gt; | &lt;percentage&gt; | inherit</div></pre></td></tr></table></figure>
+</li>
+<li><p>水平对齐（text-align）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">CSS2.1  text-align: left | center | right | justify | inherit</div><div class="line">CSS2    text-align: left | center | right | justify | &lt;string&gt; | inherit</div></pre></td></tr></table></figure>
+</li>
+<li><p>行高（line-height）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">line-height: &lt;length&gt; | &lt;percentage&gt; | &lt;number&gt; | normal | inherit</div></pre></td></tr></table></figure>
+</li>
+<li><p>垂直对齐文本（vertical-align）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vertical-align: baseline | sub | super | text-top | text-bottom | middle | top | bottom | &lt;percentage&gt; | &lt;length&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>字间隔（word-spacing）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">word-spacing: &lt;length&gt; | normal | inherit</div></pre></td></tr></table></figure>
+</li>
+<li><p>字母间隔（letter-spacing）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">letter-spacing: &lt;length&gt; | normal | inherit</div></pre></td></tr></table></figure>
+</li>
+<li><p>文本转换（text-transform）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">text-transform: uppercase | lowercase | capitalize | none | inherit</div></pre></td></tr></table></figure>
+</li>
+<li><p>文本装饰（text-decoration）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">text-decoration: none | [underline || overline || line-through || blink] | inherit</div></pre></td></tr></table></figure>
+</li>
+<li><p>文本阴影（text-shadow）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">text-shadow: none | [&lt;color&gt; || &lt;length&gt;&lt;length&gt;&lt;length&gt;?,]* [&lt;color&gt; || &lt;length&gt;&lt;length&gt;&lt;length&gt;?] | inherit</div><div class="line">例如：</div><div class="line">h1 &#123;text-shadow: yellow 2px 2px 2px;&#125;</div><div class="line">p &#123;text-shadow: 0 0 4px silver;&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>处理空白格（white-space）<br><img src="http://ogcpvdyqb.bkt.clouddn.com/white.png" alt="white-space"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">white-space: normal | pre | nowrap | pre-wrap | pre-line</div></pre></td></tr></table></figure>
+</li>
+<li><p>文本方向（direction）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">direction: ltr | rtl | inherit</div></pre></td></tr></table></figure>
+</li>
+<li><p>文本方向（unicode-bidi）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">unicode-bidi: normal | embed | bidi-override | inherit</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p><strong>说明：</strong><br>对于行内元素，只有当 unicode-bidi 属性设置为 embed 或 bidi-override 时才会应用 direction 属性。<br>direction 属性有两个值：ltr 和 rtl。大多数情况下，默认值是 ltr，显示从左到右的文本。如果显示从右到左的文本，应使用值 rtl。</p>
+</blockquote>
+<h2 id="六-CSS中的背景、表格、列表、生成内容与轮廓"><a href="#六-CSS中的背景、表格、列表、生成内容与轮廓" class="headerlink" title="六. CSS中的背景、表格、列表、生成内容与轮廓"></a>六. CSS中的背景、表格、列表、生成内容与轮廓</h2><h3 id="6-1-背景"><a href="#6-1-背景" class="headerlink" title="6.1 背景"></a>6.1 背景</h3><p>元素的背景是指前景之下直到边框外边界的所有空间，内容框和内边距都是元素背景的一部分，并且边框画在背景之上。</p>
+<ol>
+<li><p>背景色（background-color）：这个属性接受任何合法的颜色值，默认值是 transparent（透明）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">background-color: &lt;color&gt; | transparent | inherit</div></pre></td></tr></table></figure>
+</li>
+<li><p>背景图像（background-image）：这个属性允许向任何元素应用背景图像，默认值是 none。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">background-image: &lt;uri&gt; | none | inherit</div></pre></td></tr></table></figure>
+</li>
+<li><p>背景重复（background-repeat）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">background-repeat: repeat | repeat-x | repeat-y | no-repeat | inherit</div></pre></td></tr></table></figure>
+</li>
+<li><p>背景定位（background-position）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">background-position: [[&lt;percentage&gt; | &lt;length&gt; | left | center | right][&lt;percentage&gt;] | &lt;length&gt; | top | center | bottom]?] || [[left | center | right] || [top | center | bottom]] | inherit</div><div class="line">例如：</div><div class="line">p &#123;background-image: url(logo.gif);background-repeat: no-repeat;background-position: top right;&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>背景关联（background-attachment）：如果文档比较长，那么当文档向下滚动时，背景图像也会随之滚动。当文档滚动到超过图像的位置时，图像就会消失。通过背景关联这个属性，可以防止这种滚动。默认值是 scroll（滚动）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">background-attachment: scroll | fixed | inherit</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="6-2-表格"><a href="#6-2-表格" class="headerlink" title="6.2 表格"></a>6.2 表格</h3><ol>
+<li><p>设置表标题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">caption-side: top | bottom</div></pre></td></tr></table></figure>
+</li>
+<li><p>设置表单元格边框</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">border-collapse: collapse | separate | inherit</div></pre></td></tr></table></figure>
+</li>
+<li><p>设置边框间隔</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">border-spacing: &lt;length&gt;&lt;length&gt;? | inherit</div></pre></td></tr></table></figure>
+</li>
+<li><p>处理空单元格</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">empty-cells: show | hide | inherit</div></pre></td></tr></table></figure>
+</li>
+<li><p>设置表大小</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">table-layout: auto | fixed | inherit</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="6-3-列表"><a href="#6-3-列表" class="headerlink" title="6.3 列表"></a>6.3 列表</h3><ol>
+<li><p>列表类型：要影响列表的样式，最简单（同时支持最充分）的办法就是改变其标志类型。要修改用于列表项的标志类型，可以使用属性 list-style-type：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">CSS2.1  list-style-type：disc | circle | square | decimal | decimal-leading-zero | lower-roman | upper-roman | lower-greek | lower-latin | upper-latin | armenian | georgian | none | inherit</div><div class="line">CSS2    list-style-type：disc | circle | square | decimal | decimal-leading-zero | upper-alpha | lower-alpha | upper-roman | lower-roman | lower-greek | hebrew | armenian | georgian | cjk-ideographic | hiragana | katakana | hiragana-iroha | none | inherit</div></pre></td></tr></table></figure>
+</li>
+<li><p>列表项图像：使用 list-style-image 属性可以为列表项设置一个图像标志。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">list-style-image: &lt;uri&gt; | none | inherit</div></pre></td></tr></table></figure>
+</li>
+<li><p>列表标志位置：CSS2.1 可以通过属性 list-style-position 确定标志出现在列表项内容之外还是内容内部。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">list-style-position: inside | outside | inherit</div></pre></td></tr></table></figure>
+</li>
+<li><p>简写列表样式：为简单起见，可以将以上 3 个列表样式属性合并为一个方便的属性：list-style。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[&lt;list-style-type&gt; || &lt;list-style-image&gt; || &lt;list-style-position&gt;] | inherit</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="6-4-生成内容"><a href="#6-4-生成内容" class="headerlink" title="6.4 生成内容"></a>6.4 生成内容</h3><p>在CSS2 和 CSS 2.1 中，生成内容是指由浏览器创建的内容。例如，列表标志就是生成内容。为了向文档中插入生成内容，可以使用 :before 和 :after 伪元素结合 content 属性来生成内容。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">content: normal | [&lt;string&gt; | &lt;uri&gt; | &lt;counter&gt; | attr(&lt;identifier&gt;) | open-quote | close-quote | no-open-quote | no-close-quote]+ | inherit</div></pre></td></tr></table></figure></p>
+<p><strong>content 的内容一般可以为以下四种：</strong></p>
+<ol>
+<li>none： 不生成任何值；</li>
+<li>attr： 插入标签属性值；</li>
+<li>url： 使用指定的绝对或相对地址插入一个外部资源（图像，声频，视频或浏览器支持的其他任何资源）；</li>
+<li>string： 插入字符串。</li>
+</ol>
+<blockquote>
+<p><strong>补充：</strong></p>
+<ol>
+<li>引号：使用 quotes 可以为不同的内容加上合适的引号。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">quotes: [&lt;string&gt; &lt;string&gt;]+ | none | inherit</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</blockquote>
+<ol>
+<li>计数器：使用计数器可以创建包含数字序号的内容。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">重置（counter-reset）：设置计数器的起点。</div><div class="line">counter-reset: [&lt;indentifier&gt;&lt;integer&gt;?]+ | none | inherit</div><div class="line">递增（counter-increment）：设置可以递增的计数器。</div><div class="line">counter-increment: [&lt;indentifier&gt;&lt;integer&gt;?]+ | none | inherit</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="6-5-轮廓"><a href="#6-5-轮廓" class="headerlink" title="6.5 轮廓"></a>6.5 轮廓</h3><p>轮廓（outline）是绘制于元素周围的一条线，位于边框边缘的外围，可起到突出元素的作用。</p>
+<ol>
+<li><p>设置轮廓样式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">outline-style: none | dotted | dashed | solid | double | groove | ridge | inset | outset | inherit</div></pre></td></tr></table></figure>
+</li>
+<li><p>设置轮廓宽度</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">outline-width: thin | medium | thick | &lt;length&gt; | inherit</div></pre></td></tr></table></figure>
+</li>
+<li><p>设置轮廓颜色</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">outline-color: &lt;color&gt; | invert | inherit</div></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/新手/" rel="tag"># 新手</a>
+          
+            <a href="/tags/CSS/" rel="tag"># CSS</a>
+          
+            <a href="/tags/笔记/" rel="tag"># 笔记</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/06/CSS学习笔记（二）/" rel="next" title="CSS学习笔记（二）">
+                <i class="fa fa-chevron-left"></i> CSS学习笔记（二）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/11/CSS学习笔记（四）/" rel="prev" title="CSS学习笔记（四）">
+                CSS学习笔记（四） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Joke" />
+          <p class="site-author-name" itemprop="name">Joke</p>
+           
+              <p class="site-description motion-element" itemprop="description">A girl named Lu.</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/JokeYang" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://music.163.com/#/user/home?id=5609643" target="_blank" title="云音乐">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  云音乐
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Friends
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.jerrywin.com/" title="Jerry" target="_blank">Jerry</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://github.com/Ricordo" title="Ricordo" target="_blank">Ricordo</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://yuan0.github.io" title="yuan0" target="_blank">yuan0</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#四、CSS的特殊性、继承和层叠"><span class="nav-number">1.</span> <span class="nav-text">四、CSS的特殊性、继承和层叠</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-特殊性"><span class="nav-number">1.1.</span> <span class="nav-text">4.1 特殊性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-继承"><span class="nav-number">1.2.</span> <span class="nav-text">4.2 继承</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-1-层叠规则"><span class="nav-number">1.2.1.</span> <span class="nav-text">4.3.1 层叠规则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-2-层叠总结"><span class="nav-number">1.2.2.</span> <span class="nav-text">4.3.2 层叠总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五-CSS中的单位、颜色、字体、文本"><span class="nav-number">2.</span> <span class="nav-text">五. CSS中的单位、颜色、字体、文本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-CSS中的单位"><span class="nav-number">2.1.</span> <span class="nav-text">5.1 CSS中的单位</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-CSS中的颜色"><span class="nav-number">2.2.</span> <span class="nav-text">5.2 CSS中的颜色</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-1-用颜色名表示颜色"><span class="nav-number">2.2.1.</span> <span class="nav-text">5.2.1 用颜色名表示颜色</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-2-用RGB表示颜色"><span class="nav-number">2.2.2.</span> <span class="nav-text">5.2.2 用RGB表示颜色</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-3-用16进制表示颜色"><span class="nav-number">2.2.3.</span> <span class="nav-text">5.2.3 用16进制表示颜色</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-4-用HSL表示颜色"><span class="nav-number">2.2.4.</span> <span class="nav-text">5.2.4 用HSL表示颜色</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-CSS中的URL、关键字"><span class="nav-number">2.3.</span> <span class="nav-text">5.3 CSS中的URL、关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-1-URL"><span class="nav-number">2.3.1.</span> <span class="nav-text">5.3.1 URL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-2-关键字"><span class="nav-number">2.3.2.</span> <span class="nav-text">5.3.2 关键字</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-CSS中的字体"><span class="nav-number">2.4.</span> <span class="nav-text">5.4 CSS中的字体</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-4-1-字体系列的使用"><span class="nav-number">2.4.1.</span> <span class="nav-text">5.4.1 字体系列的使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-4-2-字体的其它属性"><span class="nav-number">2.4.2.</span> <span class="nav-text">5.4.2 字体的其它属性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-5-CSS中的文本属性"><span class="nav-number">2.5.</span> <span class="nav-text">5.5 CSS中的文本属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六-CSS中的背景、表格、列表、生成内容与轮廓"><span class="nav-number">3.</span> <span class="nav-text">六. CSS中的背景、表格、列表、生成内容与轮廓</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-背景"><span class="nav-number">3.1.</span> <span class="nav-text">6.1 背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-表格"><span class="nav-number">3.2.</span> <span class="nav-text">6.2 表格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-列表"><span class="nav-number">3.3.</span> <span class="nav-text">6.3 列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-4-生成内容"><span class="nav-number">3.4.</span> <span class="nav-text">6.4 生成内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-5-轮廓"><span class="nav-number">3.5.</span> <span class="nav-text">6.5 轮廓</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Joke</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

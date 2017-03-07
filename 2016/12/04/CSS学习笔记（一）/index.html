@@ -1,0 +1,895 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="新手,CSS,笔记," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="引言
+最近刚好在学CSS，所以这篇博客主要是记录我跟着《CSS权威指南》学习CSS过程中的一些知识点。这样，学完之后，把一些知识点记录下来，除了加深记忆，也方便以后复习。
+
+
+一、认识CSS首先，先简单的描述一下CSS。CSS 语言是一种标记语言,因此不需要编译，可以直接由浏览器执行 ( 属于浏览器解释型语言 )。CSS 全称为“层叠样式表 (Cascading Style Sheets)”，它主">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS学习笔记（一）">
+<meta property="og:url" content="http://yoursite.com/2016/12/04/CSS学习笔记（一）/index.html">
+<meta property="og:site_name" content="Joke's Blog World">
+<meta property="og:description" content="引言
+最近刚好在学CSS，所以这篇博客主要是记录我跟着《CSS权威指南》学习CSS过程中的一些知识点。这样，学完之后，把一些知识点记录下来，除了加深记忆，也方便以后复习。
+
+
+一、认识CSS首先，先简单的描述一下CSS。CSS 语言是一种标记语言,因此不需要编译，可以直接由浏览器执行 ( 属于浏览器解释型语言 )。CSS 全称为“层叠样式表 (Cascading Style Sheets)”，它主">
+<meta property="og:image" content="http://ogcpvdyqb.bkt.clouddn.com/52fde5c30001b0fe03030117.jpg">
+<meta property="og:updated_time" content="2017-03-07T04:19:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS学习笔记（一）">
+<meta name="twitter:description" content="引言
+最近刚好在学CSS，所以这篇博客主要是记录我跟着《CSS权威指南》学习CSS过程中的一些知识点。这样，学完之后，把一些知识点记录下来，除了加深记忆，也方便以后复习。
+
+
+一、认识CSS首先，先简单的描述一下CSS。CSS 语言是一种标记语言,因此不需要编译，可以直接由浏览器执行 ( 属于浏览器解释型语言 )。CSS 全称为“层叠样式表 (Cascading Style Sheets)”，它主">
+<meta name="twitter:image" content="http://ogcpvdyqb.bkt.clouddn.com/52fde5c30001b0fe03030117.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/12/04/CSS学习笔记（一）/"/>
+
+
+
+
+
+  <title> CSS学习笔记（一） | Joke's Blog World </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Joke's Blog World</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">You Can Do Best!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/04/CSS学习笔记（一）/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Joke">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Joke's Blog World">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Joke's Blog World" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                CSS学习笔记（一）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-04T21:52:04+08:00">
+                2016-12-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><blockquote>
+<p>最近刚好在学CSS，所以这篇博客主要是记录我跟着《CSS权威指南》学习CSS过程中的一些知识点。这样，学完之后，把一些知识点记录下来，除了加深记忆，也方便以后复习。</p>
+</blockquote>
+<hr>
+<h2 id="一、认识CSS"><a href="#一、认识CSS" class="headerlink" title="一、认识CSS"></a>一、认识CSS</h2><p>首先，先简单的描述一下CSS。<strong>CSS</strong> 语言是一种标记语言,因此不需要编译，可以直接由浏览器执行 ( 属于浏览器解释型语言 )。<strong>CSS</strong> 全称为“层叠样式表 (Cascading Style Sheets)”，它主要是用于定义HTML内容在浏览器内的显示样式，如文字大小、颜色、字体加粗等，它有着以下的优点：</p>
+<ol>
+<li><strong>内容与表现分离</strong> ：使用CSS+HTML，网页的内容(HTML)与表现(CSS)就可以分开了。CSS独立于HTML文件，可以方便维护与复用。</li>
+<li><strong>表现的统一</strong> ：使用CSS来控制网页的内容，可以使网页的表现非常的统一，并且容易修改。</li>
+<li><strong>良好的扩展性</strong> ：CSS可以支持多种设备，比如手机、PAD、打印机、游戏机等。</li>
+<li><strong>缩减文件大小</strong> ：使用CSS可以减少网页的代码量，增加网页的浏览速度，减少硬盘容量。<a id="more"></a>
+<h2 id="二、CSS基础知识"><a href="#二、CSS基础知识" class="headerlink" title="二、CSS基础知识"></a>二、CSS基础知识</h2><h3 id="2-1-一些基本术语"><a href="#2-1-一些基本术语" class="headerlink" title="2.1 一些基本术语"></a>2.1 一些基本术语</h3>在开始学习CSS之前，我们首先需要理解以下的概念 ：<br><code>元素</code> 是文档结构的基础。在HTML中，元素就是标签。例如，<code>p</code>、<code>div</code> 、<code>span</code> 。文档中的每个元素都对文档的表现起一定的作用。而在CSS中，元素分为两类：<code>块级元素</code> 、<code>行内元素</code>。</li>
+</ol>
+<p><strong>替换和非替换元素</strong> ：</p>
+<ul>
+<li><code>替换元素</code> ：指元素的具体显示内容是由浏览器根据元素的标签和属性来决定。例如，img标签是通过src属性的值来读取相应的图片信息并显示图片。</li>
+<li><code>非替换元素</code> ：指直接将要显示的内容告诉浏览器，将其显示出来。例如，p标签，浏览器会将标签中的内容直接显示出来。</li>
+</ul>
+<p><strong>块级和行内元素</strong> ：</p>
+<ul>
+<li><code>块级元素</code> ：在HTML中, <code>&lt;div&gt;</code> 、<code>&lt;p&gt;</code> 、<code>&lt;h1&gt;</code> 、<code>&lt;form&gt;</code> 、<code>&lt;ul&gt;</code> 、 <code>&lt;li&gt;</code> 就是块级元素。</li>
+</ul>
+<p><code>块级元素的特点</code>：</p>
+<ol>
+<li>每个块级元素都从新的一行开始，并且其后的元素也另起一行。（也就是说，一个块级元素独占一行）；</li>
+<li>元素的高度、宽度、行高以及顶和底边距都可设置；</li>
+<li>元素宽度在不设置的情况下，是它本身父容器的100%（和父元素的宽度一致），除非设定一个宽度。</li>
+</ol>
+<ul>
+<li><code>行内元素</code> ：在HTML中，<code>&lt;span&gt;</code> 、<code>&lt;a&gt;</code> 、<code>&lt;strong&gt;</code> 和 <code>&lt;em&gt;</code> 就是典型的 <strong>内联元素(行内元素)</strong>。</li>
+</ul>
+<blockquote>
+<p><strong>说明：</strong><br>div、h1 或 p 元素常常被称为块级元素。这意味着这些元素显示为一块内容，即“块框”。与之相反，span 和 strong 等元素称为“行内元素”，这是因为它们的内容显示在行中，即“行内框”。可以使用 display 属性改变生成的框的类型。这意味着，通过将 display 属性设置为 block，可以让行内元素（比如 a 元素）表现得像块级元素一样。还可以通过把 display 设置为 none，让生成的元素根本没有框。这样的话，该框及其所有内容就不再显示，不占用文档中的空间。</p>
+</blockquote>
+<p><code>行内元素的特点</code>：</p>
+<ol>
+<li>和其他元素都在一行上；</li>
+<li>元素的高度、宽度及顶部和底部边距不可设置；</li>
+<li>元素的宽度就是它包含的文字或图片的宽度，不可改变。</li>
+</ol>
+<p>块级元素和行内元素被称为CSS的显示元素。显示元素也可被分为三类，即：</p>
+<ol>
+<li>块级元素</li>
+<li>内联元素(行内元素)</li>
+<li><code>内联块状元素 (inline-block)</code> ：就是同时具备内联元素、块状元素的特点。</li>
+</ol>
+<blockquote>
+<p><strong>内联块状元素的特点：</strong></p>
+<ol>
+<li>和其他元素都在一行上；</li>
+<li>元素的高度、宽度、行高以及顶和底边距都可设置。</li>
+</ol>
+</blockquote>
+<h3 id="2-2-CSS语法"><a href="#2-2-CSS语法" class="headerlink" title="2.2 CSS语法"></a>2.2 CSS语法</h3><p>CSS规则由 <strong>选择器</strong> 和 <strong>声明</strong> 组成，而声明又由属性和值组成，如下图所示：</p>
+<p><img src="http://ogcpvdyqb.bkt.clouddn.com/52fde5c30001b0fe03030117.jpg" alt="selector"></p>
+<p><strong>选择器：</strong> 又称选择符，通常是网页中你要应用样式规则的元素。</p>
+<p><strong>声明：</strong> 在英文大括号“｛｝”中的的就是声明，每条声明由一个属性和一个值组成。每个属性有一个值。属性和值被冒号分开。如下所示：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">p</span> &#123;<span class="attribute">font-size</span>:<span class="number">14px</span>;<span class="attribute">color</span>:blue;&#125;</div></pre></td></tr></table></figure></p>
+<p>在这个例子中，p是选择器，font-size和color是属性，14px和blue是值。</p>
+<blockquote>
+<p><strong>注意：</strong></p>
+<ol>
+<li>图片所示的CSS规则，最后一条属性结尾没有添加分号，这种做法是可行的。但是为了以后修改方便，一般都会加上分号。</li>
+<li>为了使样式更加容易阅读，在一条规则有多重声明时，可以将每条代码写在一个新行内，如下所示：<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">p</span>&#123;</div><div class="line">  <span class="attribute">font-size</span>: <span class="number">14px</span>;</div><div class="line">  <span class="attribute">color</span>: red;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</blockquote>
+<p><strong>关键字：</strong> 一条声明中，属性的后面，用空格分隔的这些词就是关键字，这些关键字在一起构成了属性的值。大多数情况下，属性的值要么是一个关键字，要么是该属性可取关键字的一个列表(包含一个或多个关键字)，关键字之间用空格分隔。</p>
+<blockquote>
+<p><strong>注意：</strong><br>如果声明中使用了不正确的属性或者不正确的值，整个声明都会被忽略。</p>
+</blockquote>
+<h3 id="2-3-CSS样式表基本知识"><a href="#2-3-CSS样式表基本知识" class="headerlink" title="2.3 CSS样式表基本知识"></a>2.3 CSS样式表基本知识</h3><p>既然已经知道了CSS在网页内容表现中的作用，那在HTML页面中，到底CSS样式是写在哪里的呢？从CSS样式代码插入的形式来看，基本上可以分为以下三种：内联式、嵌入式、外部式。接下来，我们分别来了解着三种形式，以及CSS中的多重样式。</p>
+<h4 id="2-3-1-CSS样式"><a href="#2-3-1-CSS样式" class="headerlink" title="2.3.1 CSS样式"></a>2.3.1 CSS样式</h4><h5 id="1-内联式CSS样式"><a href="#1-内联式CSS样式" class="headerlink" title="1. 内联式CSS样式"></a>1. 内联式CSS样式</h5><p><code>内联式CSS样式表</code> 就是把CSS代码直接写在现有的HTML标签中，即在相关的标签内使用样式（style）属性。Style 属性可以包含任何 CSS 属性。如下面的代码所示：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">"color:red;margin-left:20px"</span>&gt;</span></div><div class="line">  You can do best.</div><div class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<blockquote>
+<p><strong>注意：</strong><br>由于要将表现和内容混杂在一起，内联样式会损失掉样式表的许多优势。请慎用这种方法，例如当样式仅需要在一个元素上应用一次时。</p>
+</blockquote>
+<h5 id="2-嵌入式CSS样式"><a href="#2-嵌入式CSS样式" class="headerlink" title="2. 嵌入式CSS样式"></a>2. 嵌入式CSS样式</h5><p><code>嵌入式CSS样式表</code> 就是把CSS代码写在<style type="text/css"></style>标签之间，如下所示：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="css"></span></div><div class="line">  <span class="selector-tag">hr</span> &#123;<span class="attribute">color</span>: sienna;&#125;</div><div class="line">  <span class="selector-tag">p</span> &#123;<span class="attribute">margin-left</span>: <span class="number">20px</span>;&#125;</div><div class="line">  <span class="selector-tag">body</span> &#123;<span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">"images/hello.png"</span>);&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<blockquote>
+<p><strong>注意：</strong><br>嵌入式CSS样式一般是当单个文档需要特殊的样式时使用，并且包含CSS样式的 <code>&lt;style&gt;</code> 标签一般是写在文档的头部 <code>&lt;head&gt;</code> 标签之间。</p>
+</blockquote>
+<p>除了在 <code>&lt;style&gt;</code> 标记之间包含多个CSS规则，也可以通过 <code>@import</code> 指令来引入多个外部式样式表，如下所示：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="css"></span></div><div class="line">  @@<span class="keyword">import</span> url(style.css);  <span class="comment">/*这条指令必须在其他的CSS规则前，否则将不起作用*/</span></div><div class="line">  <span class="selector-tag">h1</span> &#123;<span class="attribute">color</span>: gray;&#125;</div><div class="line">  <span class="selector-tag">p</span> &#123;<span class="attribute">font-size</span>: <span class="number">12px</span>;<span class="attribute">color</span>: red;&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<blockquote>
+<p> <strong>注意：</strong><br><code>@import</code> 指令与 <code>link</code> 类似，其用于Web浏览器加载一个外部样式表，并在表现HTML文档时应用这个外部样式。唯一的区别在于指令的具体语法和位置。<code>@import</code> 指令出现在 <code>style</code> 容器中，而且必须要位于其他CSS规则之前，否则，指令所引入的样式表将不起作用。</p>
+</blockquote>
+<h5 id="3-外部式CSS样式"><a href="#3-外部式CSS样式" class="headerlink" title="3. 外部式CSS样式"></a>3. 外部式CSS样式</h5><p><code>外部式CSS样式表</code> 也称为(外联式)，就是把CSS代码写在一个单独的外部CSS文件中，这个CSS文件以 <code>.css</code> 为扩展名，在 <code>&lt;head&gt;</code> 内（不是在 <code>&lt;style&gt;</code> 标签内）使用 <code>&lt;link&gt;</code> 标签将CSS样式文件链接到HTMl文件内。如下面的代码所示：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"base.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> /&gt;</span></div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>在 <code>link</code> 标记中，有三个常用的属性 href、rel、type。其中，href 的值是样式表的 URL，可以是绝对 URL，也可以是相对 URL；rel 代表“关系（relation）”，在这里它的值是 stylesheet；type 表明了使用<code>link</code>标签加载的数据的类型，它的值总是设置为“text/css”。</p>
+</blockquote>
+<p>浏览器会加载外部CSS文件 base.css，从中读到样式声明，并根据它来格式文档。</p>
+<blockquote>
+<p><strong>注意：</strong></p>
+<ol>
+<li>当样式需要应用于很多页面时，外部样式表将是理想的选择。在使用外部样式表的情况下，你可以通过改变一个文件来改变整个站点的外观。</li>
+<li>外部CSS文件不能包含任何的 html 标签，只能有CSS规则和CSS注释。因为如果一个外部样式表中出现了 html 标签，会导致其中一部分或全部被忽略。</li>
+<li>不要在属性值与单位之间留有空格。例如：“font-size:14px;”，而不能写成“font-size:14 px”。</li>
+</ol>
+</blockquote>
+<h4 id="2-3-2-多重样式"><a href="#2-3-2-多重样式" class="headerlink" title="2.3.2 多重样式"></a>2.3.2 多重样式</h4><p>如果某些属性在不同的样式表中被同样的选择器定义，那么属性值将从更具体的样式表中被继承过来。例如，外部式样式表 “base.css” 针对h3选择器有如下规则：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">h3</span> &#123;</div><div class="line">  <span class="attribute">color</span>: red;</div><div class="line">  <span class="attribute">text-align</span>: left;</div><div class="line">  <span class="attribute">font-size</span>: <span class="number">14px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>而嵌入式样式表中针对h3选择器的规则是：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">h3</span> &#123;</div><div class="line">  <span class="attribute">text-align</span>: right;</div><div class="line">  <span class="attribute">font-size</span>: <span class="number">20px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>假如一个页面同时应用了外部式样式表和嵌入式样式表，那么，h3最后的样式是：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">h3</span> &#123;</div><div class="line">  <span class="attribute">color</span>: red;</div><div class="line">  <span class="attribute">text-align</span>: right;</div><div class="line">  <span class="attribute">font-size</span>: <span class="number">20px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>即最终，h3选择器的颜色属性将应用外部式样式表中的规则，而文字排列和字体尺寸会应用嵌入式样式表中的规则。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/新手/" rel="tag"># 新手</a>
+          
+            <a href="/tags/CSS/" rel="tag"># CSS</a>
+          
+            <a href="/tags/笔记/" rel="tag"># 笔记</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/09/搭建hexo/" rel="next" title="Hexo+Github搭建博客">
+                <i class="fa fa-chevron-left"></i> Hexo+Github搭建博客
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/06/CSS学习笔记（二）/" rel="prev" title="CSS学习笔记（二）">
+                CSS学习笔记（二） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Joke" />
+          <p class="site-author-name" itemprop="name">Joke</p>
+           
+              <p class="site-description motion-element" itemprop="description">A girl named Lu.</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/JokeYang" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://music.163.com/#/user/home?id=5609643" target="_blank" title="云音乐">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  云音乐
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Friends
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.jerrywin.com/" title="Jerry" target="_blank">Jerry</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://github.com/Ricordo" title="Ricordo" target="_blank">Ricordo</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://yuan0.github.io" title="yuan0" target="_blank">yuan0</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、认识CSS"><span class="nav-number">1.1.</span> <span class="nav-text">一、认识CSS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、CSS基础知识"><span class="nav-number">1.2.</span> <span class="nav-text">二、CSS基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-一些基本术语"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 一些基本术语</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-CSS语法"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 CSS语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-CSS样式表基本知识"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 CSS样式表基本知识</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-1-CSS样式"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">2.3.1 CSS样式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-内联式CSS样式"><span class="nav-number">1.2.3.1.1.</span> <span class="nav-text">1. 内联式CSS样式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-嵌入式CSS样式"><span class="nav-number">1.2.3.1.2.</span> <span class="nav-text">2. 嵌入式CSS样式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-外部式CSS样式"><span class="nav-number">1.2.3.1.3.</span> <span class="nav-text">3. 外部式CSS样式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-2-多重样式"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">2.3.2 多重样式</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Joke</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
