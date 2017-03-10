@@ -120,7 +120,7 @@
 
 一、认识CSS首先，先简单的描述一下CSS。CSS 语言是一种标记语言,因此不需要编译，可以直接由浏览器执行 ( 属于浏览器解释型语言 )。CSS 全称为“层叠样式表 (Cascading Style Sheets)”，它主">
 <meta property="og:image" content="http://ogcpvdyqb.bkt.clouddn.com/52fde5c30001b0fe03030117.jpg">
-<meta property="og:updated_time" content="2017-03-07T04:19:22.000Z">
+<meta property="og:updated_time" content="2017-03-10T11:45:32.812Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS学习笔记（一）">
 <meta name="twitter:description" content="引言
@@ -476,7 +476,7 @@
 <blockquote>
 <p><strong>注意：</strong><br>嵌入式CSS样式一般是当单个文档需要特殊的样式时使用，并且包含CSS样式的 <code>&lt;style&gt;</code> 标签一般是写在文档的头部 <code>&lt;head&gt;</code> 标签之间。</p>
 </blockquote>
-<p>除了在 <code>&lt;style&gt;</code> 标记之间包含多个CSS规则，也可以通过 <code>@import</code> 指令来引入多个外部式样式表，如下所示：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="css"></span></div><div class="line">  @@<span class="keyword">import</span> url(style.css);  <span class="comment">/*这条指令必须在其他的CSS规则前，否则将不起作用*/</span></div><div class="line">  <span class="selector-tag">h1</span> &#123;<span class="attribute">color</span>: gray;&#125;</div><div class="line">  <span class="selector-tag">p</span> &#123;<span class="attribute">font-size</span>: <span class="number">12px</span>;<span class="attribute">color</span>: red;&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>除了在 <code>&lt;style&gt;</code> 标记之间包含多个CSS规则，也可以通过 <code>@import</code> 指令来引入多个外部式样式表，如下所示：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="css"></span></div><div class="line">  @<span class="keyword">import</span> url(style.css);  <span class="comment">/*这条指令必须在其他的CSS规则前，否则将不起作用*/</span></div><div class="line">  <span class="selector-tag">h1</span> &#123;<span class="attribute">color</span>: gray;&#125;</div><div class="line">  <span class="selector-tag">p</span> &#123;<span class="attribute">font-size</span>: <span class="number">12px</span>;<span class="attribute">color</span>: red;&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <blockquote>
 <p> <strong>注意：</strong><br><code>@import</code> 指令与 <code>link</code> 类似，其用于Web浏览器加载一个外部样式表，并在表现HTML文档时应用这个外部样式。唯一的区别在于指令的具体语法和位置。<code>@import</code> 指令出现在 <code>style</code> 容器中，而且必须要位于其他CSS规则之前，否则，指令所引入的样式表将不起作用。</p>
 </blockquote>
